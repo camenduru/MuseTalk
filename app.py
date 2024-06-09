@@ -4,7 +4,6 @@ import pdb
 import re
 
 import gradio as gr
-import spaces
 import numpy as np
 import sys
 import subprocess
@@ -126,7 +125,7 @@ from musetalk.utils.utils import load_all_model
 
 
 
-@spaces.GPU(duration=600)
+
 @torch.no_grad()
 def inference(audio_path,video_path,bbox_shift,progress=gr.Progress(track_tqdm=True)):
     args_dict={"result_dir":'./results/output', "fps":25, "batch_size":8, "output_vid_name":'', "use_saved_coord":False}#same with inferenece script
@@ -422,5 +421,5 @@ port_number = 7860  # Replace with your desired port number
 
 
 demo.queue().launch(
-    share=False , debug=True, server_name=ip_address, server_port=port_number
+    share=True , debug=True, server_name=ip_address, server_port=port_number
 )
